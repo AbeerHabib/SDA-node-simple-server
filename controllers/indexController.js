@@ -1,15 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDefaultMessage = void 0;
-const getDefaultMessage = (req, res, next) => {
+export const getDefaultMessage = (req, res) => {
     try {
         res.status(200).send({
             success: true,
             message: 'Hello, World!'
         });
     }
-    catch (error) {
-        next(error);
+    catch(error) {
+        res.status(500).send({
+            success: false,
+            message: error.message
+        });
     }
 };
-exports.getDefaultMessage = getDefaultMessage;
